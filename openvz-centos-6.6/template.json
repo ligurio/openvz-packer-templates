@@ -30,10 +30,10 @@
       "type": "vagrant",
       "override": {
         "virtualbox": {
-          "output": "openvz-centos-6-6-x64-virtualbox.box"
+          "output": "openvz-centos-6.6-x64-virtualbox.box"
         },
         "vmware": {
-          "output": "openvz-centos-6-6-x64-vmware.box"
+          "output": "openvz-centos-6.6-x64-vmware.box"
         }
       }
     }
@@ -50,7 +50,7 @@
       "http_directory": "http",
       "iso_checksum": "4ed6c56d365bd3ab12cd88b8a480f4a62e7c66d2",
       "iso_checksum_type": "sha1",
-      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
+      "iso_url": "http://mirror.yandex.ru/centos/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -74,7 +74,7 @@
       "http_directory": "http",
       "iso_checksum": "4ed6c56d365bd3ab12cd88b8a480f4a62e7c66d2",
       "iso_checksum_type": "sha1",
-      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
+      "iso_url": "http://mirror.yandex.ru/centos/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
