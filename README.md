@@ -24,14 +24,9 @@ Running Packer
     $ cd packer-templates
     $ packer build template.json
 
-If you want to build only VirtualBox.
+If you want to build only VirtualBox:
 
     $ packer build -only=virtualbox-iso template.json
-
-Parallel builds can be run on 0.6.0 or latest packer version.
-
-    $ packer build -parallel=true template.json
-
 
 Supported versions
 ------------------
