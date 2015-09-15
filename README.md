@@ -1,7 +1,7 @@
 openvz-packer-templates
 =======================
 
-Packer templates for building base VM boxes.
+Packer templates for building base OpenVZ and Virtuozzo VM boxes.
 
 Usage
 =====
@@ -21,7 +21,7 @@ Running Packer
 --------------
 
     $ git clone https://github.com/ligurio/openvz-packer-templates
-    $ cd packer-templates
+    $ cd openvz-packer-templates
     $ packer build template.json
 
 If you want to build only VirtualBox:
