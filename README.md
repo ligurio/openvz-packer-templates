@@ -20,7 +20,7 @@ If you're using Homebrew:
 Running Packer
 --------------
 
-    $ git clone https://github.com/ligurio/packer-templates
+    $ git clone https://github.com/ligurio/openvz-packer-templates
     $ cd packer-templates
     $ packer build template.json
 
