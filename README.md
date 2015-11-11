@@ -31,7 +31,7 @@ If you want to build only VirtualBox:
 Using Vagrant box
 -----------------
 
-	$ vagrant init [OpenVZ/Virtuozzo-7b2](https://atlas.hashicorp.com/OpenVZ/boxes/Virtuozzo-7b2)
+	$ vagrant init OpenVZ/Virtuozzo-7b2
 	$ vagrant up --provider virtualbox
 	$ vagrant ssh
 
