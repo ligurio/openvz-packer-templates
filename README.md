@@ -1,7 +1,7 @@
-openvz-packer-templates
+OpenVZ packer templates
 =======================
 
-Packer templates for building base OpenVZ and Virtuozzo VM boxes.
+Packer templates for building base [OpenVZ and Virtuozzo VM boxes](https://atlas.hashicorp.com/OpenVZ/).
 
 Usage
 =====
