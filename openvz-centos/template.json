@@ -2,7 +2,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "execute_command": "echo 'vagrant'|sudo -S -E sh '{{.Path}}'",
+      "execute_command": "echo 'openvz'|sudo -S -E sh '{{.Path}}'",
       "override": {
         "virtualbox-iso": {
           "scripts": [
@@ -51,11 +51,11 @@
       "iso_checksum": "9d3fec5897be6b3fed4d3dda80b8fa7bb62c616bbfd4bdcd27295ca9b764f498",
       "iso_checksum_type": "sha256",
       "iso_url": "http://mirror.yandex.ru/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
+      "ssh_username": "openvz",
+      "ssh_password": "openvz",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
-      "shutdown_command": "echo '/sbin/halt -h -p' > /tmp/shutdown.sh; echo 'vagrant'|sudo -S sh '/tmp/shutdown.sh'",
+      "shutdown_command": "echo '/sbin/halt -h -p' > /tmp/shutdown.sh; echo 'openvz'|sudo -S sh '/tmp/shutdown.sh'",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
@@ -75,11 +75,11 @@
       "iso_checksum": "9d3fec5897be6b3fed4d3dda80b8fa7bb62c616bbfd4bdcd27295ca9b764f498",
       "iso_checksum_type": "sha256",
       "iso_url": "http://mirror.yandex.ru/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
+      "ssh_username": "openvz",
+      "ssh_password": "openvz",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
-      "shutdown_command": "echo '/sbin/halt -h -p' > /tmp/shutdown.sh; echo 'vagrant'|sudo -S sh '/tmp/shutdown.sh'",
+      "shutdown_command": "echo '/sbin/halt -h -p' > /tmp/shutdown.sh; echo 'openvz'|sudo -S sh '/tmp/shutdown.sh'",
       "tools_upload_flavor": "linux",
       "vmx_data": {
         "memsize": "512",
