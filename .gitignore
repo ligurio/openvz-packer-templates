@@ -1,0 +1,6 @@
+*.box
+packer_cache
+packer.log
+.DS_Store
+/builds/
+/packer-*/

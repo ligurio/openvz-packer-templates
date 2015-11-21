@@ -21,12 +21,13 @@ Running Packer
 --------------
 
     $ git clone https://github.com/ligurio/openvz-packer-templates
-    $ cd openvz-packer-templates
-    $ packer build template.json
+    $ packer build virtuozzo-7.0.json
 
 If you want to build only VirtualBox:
 
-    $ packer build -only=virtualbox-iso template.json
+    $ packer build -only=virtualbox-iso virtuozzo-7.0.json
+
+The result box will be available in `builds/` directory.
 
 Using Vagrant box
 -----------------

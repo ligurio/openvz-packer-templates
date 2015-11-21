@@ -7,6 +7,8 @@
         "HOME_DIR=/home/vagrant"
       ],
       "scripts": [
+        "scripts/sshd.sh",
+        "scripts/networking.sh",
         "scripts/vagrant.sh",
         "scripts/vmtools.sh",
         "scripts/cleanup.sh",
@@ -17,22 +19,23 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "openvz-centos-6.7-x64-{{.Provider}}.box"
+      "output": "builds/openvz-centos-6.7-x64-{{.Provider}}.box"
     }
   ],
   "builders": [
     {
       "type": "virtualbox-iso",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": 40520,
       "guest_os_type": "RedHat_64",
       "http_directory": "http",
-      "iso_checksum": "9d3fec5897be6b3fed4d3dda80b8fa7bb62c616bbfd4bdcd27295ca9b764f498",
-      "iso_checksum_type": "sha256",
-      "iso_url": "http://mirror.yandex.ru/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "output_directory": "packer-{{user `template`}}-{{.Provider}}",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -43,26 +46,29 @@
       "vboxmanage": [
         [ "modifyvm", "{{.Name}}", "--memory", "512" ],
         [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
-      ]
+      ],
+      "vm_name": "{{user `template`}}"
     },
     {
       "type": "vmware-iso",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": 40520,
       "guest_os_type": "RedHat_64",
       "http_directory": "http",
-      "iso_checksum": "9d3fec5897be6b3fed4d3dda80b8fa7bb62c616bbfd4bdcd27295ca9b764f498",
-      "iso_checksum_type": "sha256",
-      "iso_url": "http://mirror.yandex.ru/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "output_directory": "packer-{{user `template`}}-{{.Provider}}",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
       "shutdown_command": "echo '/sbin/halt -h -p' > /tmp/shutdown.sh; echo 'vagrant'|sudo -S sh '/tmp/shutdown.sh'",
       "tools_upload_flavor": "linux",
+      "vm_name": "{{user `template`}}",
       "vmx_data": {
         "memsize": "512",
         "numvcpus": "1",
@@ -72,15 +78,16 @@
     {
       "type": "parallels-iso",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": 40520,
       "guest_os_type": "rhel",
       "http_directory": "http",
-      "iso_checksum": "9d3fec5897be6b3fed4d3dda80b8fa7bb62c616bbfd4bdcd27295ca9b764f498",
-      "iso_checksum_type": "sha256",
-      "iso_url": "http://mirror.yandex.ru/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "output_directory": "packer-{{user `template`}}-{{.Provider}}",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -91,7 +98,14 @@
         [ "set", "{{.Name}}", "--memsize", "512" ],
         [ "set", "{{.Name}}", "--cpus", "1" ]
       ],
-      "vm_name": "openvz-centos-6.7-x64"
+      "vm_name": "{{user `template`}}"
     }
-  ]
+  ],
+  "variables": {
+    "iso_checksum": "9d3fec5897be6b3fed4d3dda80b8fa7bb62c616bbfd4bdcd27295ca9b764f498",
+    "iso_checksum_type": "sha256",
+    "iso_url": "http://mirror.yandex.ru/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso",
+    "ks_path": "openvz-centos-6.7/ks.cfg",
+    "template": "openvz-centos-6.7-x64"
+  }
 }
