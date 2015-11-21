@@ -38,7 +38,8 @@
         "vmware": {
           "output": "virtuozzo-7-0-x64-vmware.box"
         }
-      }
+      },
+      "vagrantfile_template": "vagrantfile.tpl"
     }
   ],
   "builders": [
