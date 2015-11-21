@@ -24,6 +24,15 @@
             "scripts/cleanup.sh",
             "scripts/zerodisk.sh"
           ]
+        },
+        "parallels-iso": {
+          "scripts": [
+            "scripts/base.sh",
+            "scripts/vagrant.sh",
+            "scripts/parallels.sh",
+            "scripts/cleanup.sh",
+            "scripts/zerodisk.sh"
+          ]
         }
       }
     }
@@ -31,14 +40,7 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "override": {
-        "virtualbox": {
-          "output": "virtuozzo-7-0-x64-virtualbox.box"
-        },
-        "vmware": {
-          "output": "virtuozzo-7-0-x64-vmware.box"
-        }
-      }
+      "output": "virtuozzo-7-0-x64-{{.Provider}}.box"
     }
   ],
   "builders": [
@@ -89,6 +91,30 @@
         "numvcpus": "1",
         "cpuid.coresPerSocket": "1"
       }
+    },
+    {
+      "type": "parallels-iso",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": 40520,
+      "guest_os_type": "psbm",
+      "http_directory": "http",
+      "iso_checksum": "a1c3501cd751177f1c0a96f68ca8c128a89d420ab8cf0ee4f69490de9892ccb7",
+      "iso_checksum_type": "sha256",
+      "iso_url": "http://mirror.yandex.ru/mirrors/download.openvz.org/virtuozzo/factory/x86_64/iso/VZ-7.0.0-1165-x86_64-DVD.iso",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10000s",
+      "shutdown_command": "echo '/sbin/halt -h -p' > /tmp/shutdown.sh; echo 'vagrant'|sudo -S sh '/tmp/shutdown.sh'",
+      "parallels_tools_flavor": "lin",
+      "prlctl": [
+        [ "set", "{{.Name}}", "--memsize", "512" ],
+        [ "set", "{{.Name}}", "--cpus", "1" ]
+      ],
+      "vm_name": "virtuozzo-7.0-x64"
     }
   ]
 }
