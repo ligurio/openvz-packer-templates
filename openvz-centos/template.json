@@ -35,7 +35,8 @@
         "vmware": {
           "output": "openvz-centos-6.7-x64-vmware.box"
         }
-      }
+      },
+      "vagrantfile_template": "vagrantfile.tpl"
     }
   ],
   "builders": [
