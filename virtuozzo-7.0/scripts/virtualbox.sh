@@ -1,4 +1,4 @@
-VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
+VBOX_VERSION=$(cat $HOME_DIR/.vbox_version)
 
 cd /tmp
 mount -o loop $HOME_DIR/VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
