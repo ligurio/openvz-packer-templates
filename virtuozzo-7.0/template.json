@@ -3,6 +3,9 @@
     {
       "type": "shell",
       "execute_command": "echo 'openvz'|sudo -S sh '{{.Path}}'",
+      "environment_vars": [
+        "HOME_DIR=/home/openvz"
+      ],
       "override": {
         "virtualbox-iso": {
           "scripts": [
