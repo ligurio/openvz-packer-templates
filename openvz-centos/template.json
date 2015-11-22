@@ -4,7 +4,7 @@
       "type": "shell",
       "execute_command": "echo 'vagrant'|sudo -S -E sh '{{.Path}}'",
       "environment_vars": [
-        "HOME_DIR=/home/openvz"
+        "HOME_DIR=/home/vagrant"
       ],
       "override": {
         "virtualbox-iso": {
