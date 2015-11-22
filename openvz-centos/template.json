@@ -10,7 +10,7 @@
         "scripts/vagrant.sh",
         "scripts/vmtools.sh",
         "scripts/cleanup.sh",
-        "scripts/compact.sh"
+        "scripts/minimize.sh"
       ]
     }
   ],
