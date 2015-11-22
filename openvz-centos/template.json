@@ -2,36 +2,16 @@
   "provisioners": [
     {
       "type": "shell",
-      "execute_command": "echo 'vagrant'|sudo -S -E sh '{{.Path}}'",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "environment_vars": [
         "HOME_DIR=/home/vagrant"
       ],
-      "override": {
-        "virtualbox-iso": {
-          "scripts": [
-            "scripts/vagrant.sh",
-            "scripts/virtualbox.sh",
-            "scripts/cleanup.sh",
-            "scripts/compact.sh"
-          ]
-        },
-        "vmware-iso": {
-          "scripts": [
-            "scripts/vagrant.sh",
-            "scripts/vmware.sh",
-            "scripts/cleanup.sh",
-            "scripts/compact.sh"
-          ]
-        },
-        "parallels-iso": {
-          "scripts": [
-            "scripts/vagrant.sh",
-            "scripts/parallels.sh",
-            "scripts/cleanup.sh",
-            "scripts/compact.sh"
-          ]
-        }
-      }
+      "scripts": [
+        "scripts/vagrant.sh",
+        "scripts/vmtools.sh",
+        "scripts/cleanup.sh",
+        "scripts/compact.sh"
+      ]
     }
   ],
   "post-processors": [
