@@ -40,7 +40,7 @@ should override `iso_url` and `iso_checksum` variables, for example:
 $ export VZ_FACTORY_URL=https://download.openvz.org/virtuozzo/factory/x86_64/iso/factory-DVD && \
   export VZ_FACTORY_CHECKSUM=`curl --silent https://download.openvz.org/virtuozzo/factory/x86_64/iso/factory-CHECKSUM | grep DVD | awk '{print $1}'`
 
-$ packer build -var "iso_url=${VZ_FACTORY_URL}" -var "iso_checksum=${VZ_FACTORY_CHECKSUM}" centos-6.7-x86_64.json
+$ packer build -var "iso_url=${VZ_FACTORY_URL}" -var "iso_checksum=${VZ_FACTORY_CHECKSUM}" virtuozzo-7.0.json
 ```
 
 Using Vagrant box
