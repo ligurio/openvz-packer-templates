@@ -1,0 +1,97 @@
+{
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "environment_vars": [
+        "HOME_DIR=/home/vagrant"
+      ],
+      "scripts": [
+        "scripts/vagrant.sh",
+        "scripts/vmtools.sh",
+        "scripts/cleanup.sh",
+        "scripts/minimize.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "virtuozzo-6-0-x64-{{.Provider}}.box"
+    }
+  ],
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": 40520,
+      "guest_os_type": "RedHat_64",
+      "http_directory": "http",
+      "iso_checksum": "c1b6a97c18a7dec57cfba87043435a36",
+      "iso_checksum_type": "md5",
+      "iso_url": "http://updates.cloudserver.odin.com/server/pcs/en_us/parallels/6/update10/parallels-server-6.0.10-3145-x86_64.iso",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10000s",
+      "shutdown_command": "echo '/sbin/halt -h -p' > /tmp/shutdown.sh; echo 'vagrant'|sudo -S sh '/tmp/shutdown.sh'",
+      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "virtualbox_version_file": ".vbox_version",
+      "vboxmanage": [
+        [ "modifyvm", "{{.Name}}", "--memory", "1024" ],
+        [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
+      ]
+    },
+    {
+      "type": "vmware-iso",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": 40520,
+      "guest_os_type": "centos-64",
+      "http_directory": "http",
+      "iso_checksum": "c1b6a97c18a7dec57cfba87043435a36",
+      "iso_checksum_type": "md5",
+      "iso_url": "http://updates.cloudserver.odin.com/server/pcs/en_us/parallels/6/update10/parallels-server-6.0.10-3145-x86_64.iso",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10000s",
+      "shutdown_command": "echo '/sbin/halt -h -p' > /tmp/shutdown.sh; echo 'vagrant'|sudo -S sh '/tmp/shutdown.sh'",
+      "tools_upload_flavor": "linux",
+      "vmx_data": {
+        "memsize": "1024",
+        "numvcpus": "1",
+        "cpuid.coresPerSocket": "1"
+      }
+    },
+    {
+      "type": "parallels-iso",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": 40520,
+      "guest_os_type": "psbm",
+      "http_directory": "http",
+      "iso_checksum": "c1b6a97c18a7dec57cfba87043435a36",
+      "iso_checksum_type": "md5",
+      "iso_url": "http://updates.cloudserver.odin.com/server/pcs/en_us/parallels/6/update10/parallels-server-6.0.10-3145-x86_64.iso",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10000s",
+      "shutdown_command": "echo '/sbin/halt -h -p' > /tmp/shutdown.sh; echo 'vagrant'|sudo -S sh '/tmp/shutdown.sh'",
+      "parallels_tools_flavor": "lin",
+      "prlctl": [
+        [ "set", "{{.Name}}", "--memsize", "1024" ],
+        [ "set", "{{.Name}}", "--cpus", "1" ]
+      ],
+      "vm_name": "virtuozzo-7.0-x64"
+    }
+  ]
+}
