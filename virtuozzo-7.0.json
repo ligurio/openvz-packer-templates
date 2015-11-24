@@ -102,9 +102,9 @@
     }
   ],
   "variables": {
-    "iso_checksum": "884810ed791bff1c3e6c9c6892b7d090dfd5473fe5344d1784ef9f7eac9bc331",
+    "iso_checksum": "4cfa5af65197e28178f2aa158a0b60fba93e4ad0d81ccecbe5ddf899ff5624a9",
     "iso_checksum_type": "sha256",
-    "iso_url": "http://mirror.yandex.ru/mirrors/download.openvz.org/virtuozzo/factory/x86_64/iso/VZ-7.0.0-1167-x86_64-DVD.iso",
+    "iso_url": "https://download.openvz.org/virtuozzo/releases/7.0-beta1/x86_64/iso/VZ-7.0.0-495-x86_64-DVD.iso",
     "ks_path": "virtuozzo-7.0/ks.cfg",
     "template": "virtuozzo-7.0-x64"
   }
