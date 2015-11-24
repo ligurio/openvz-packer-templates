@@ -21,12 +21,27 @@ Running Packer
 --------------
 
     $ git clone https://github.com/ligurio/openvz-packer-templates
-    $ cd openvz-packer-templates
-    $ packer build template.json
+    $ packer build virtuozzo-7.0.json
 
 If you want to build only VirtualBox:
 
-    $ packer build -only=virtualbox-iso template.json
+    $ packer build -only=virtualbox-iso virtuozzo-7.0.json
+
+The result box will be available in `builds/` directory.
+
+### Virtuozzo 7.0 Beta 2
+
+By default the box `virtuozzo-7.0` will be built using the ISO from the latest
+released milestone of Virtuozzo 7.0. At this moment it is _7.0-beta1_
+If you want to build the box `virtuozzo-7.0` from the current factory ISO build, you
+should override `iso_url` and `iso_checksum` variables, for example:
+
+```console
+$ export VZ_FACTOY_URL=https://download.openvz.org/virtuozzo/factory/x86_64/iso/factory-DVD && \
+  export VZ_FACTOY_CHECKSUM=`curl --silent https://download.openvz.org/virtuozzo/factory/x86_64/iso/factory-CHECKSUM | grep DVD | awk '{print $1}'`
+
+$ packer build -var "iso_url=${VZ_FACTOY_URL}" -var "iso_checksum=${VZ_FACTOY_CHECKSUM}" centos-6.7-x86_64.json
+```
 
 Using Vagrant box
 -----------------
